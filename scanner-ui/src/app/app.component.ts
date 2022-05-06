@@ -8,18 +8,17 @@ interface Data {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
 
   value = '';
 
   constructor(httpClient: HttpClient) {
-    httpClient.get<Data[]>('http://localhost:3000/get')
-      .subscribe((data) => {
-        this.value = data.map(d => d.item).join('; ');
-      });
+    // httpClient.get<Data[]>('http://localhost:3000/get')
+    //   .subscribe((data) => {
+    //     this.value = data.map(d => d.item).join('; ');
+    //   });
   }
 
 }

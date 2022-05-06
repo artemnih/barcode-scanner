@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 
 const CHEMICALS = [
   {
-    name: 'Acetone',
+    name: 'Compound 1',
     formula: 'C2H5OH',
     weight: '100g',
     barcode: "000111111"
@@ -32,6 +32,10 @@ export class ChemicalsService {
   getInfo(barcode: string) {
     const chemical = CHEMICALS.find(c => c.barcode === barcode);
     return of(chemical);
+  }
+
+  checkout(items: string[]) {
+    return of(items);
   }
 
 }

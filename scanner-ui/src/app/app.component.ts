@@ -12,8 +12,6 @@ interface Data {
 })
 export class AppComponent {
 
-  value = '';
-
   constructor(httpClient: HttpClient) {
     // httpClient.get<Data[]>('http://localhost:3000/get')
     //   .subscribe((data) => {

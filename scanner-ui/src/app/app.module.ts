@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { ChooseActionComponent } from './components/choose-action/choose-action.component';
+import { ScanUserComponent } from './components/scan-user/scan-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckoutComponent,
     HomeComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    ChooseActionComponent,
+    ScanUserComponent
   ],
   imports: [
     BrowserModule,

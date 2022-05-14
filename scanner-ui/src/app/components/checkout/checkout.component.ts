@@ -43,7 +43,7 @@ export class CheckoutComponent {
   complete() {
     this.chemService.checkout(this.items).subscribe(() => {
       this.items = [];
-      this.router.navigate(['/thankyou']);
+      this.router.navigate(['/checkout-summary']);
     });
   }
 

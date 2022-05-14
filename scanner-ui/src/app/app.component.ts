@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Data {
-  user: string;
-  item: string;
-}
-
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
 

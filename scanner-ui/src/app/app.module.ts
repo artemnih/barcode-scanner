@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ChooseActionComponent } from './components/choose-action/choose-action.component';
 import { ScanUserComponent } from './components/scan-user/scan-user.component';
+import { CheckoutSummaryComponent } from './components/checkout-summary/checkout-summary.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ScanUserComponent } from './components/scan-user/scan-user.component';
     HomeComponent,
     ThankyouComponent,
     ChooseActionComponent,
-    ScanUserComponent
+    ScanUserComponent,
+    CheckoutSummaryComponent
   ],
   imports: [
     BrowserModule,

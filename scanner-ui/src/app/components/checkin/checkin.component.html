@@ -1,0 +1,21 @@
+<section class="h-100 m-3">
+    <div class="align-items-center justify-content-center">
+        <h1>Please start scanning items</h1>
+        <div class="card mt-3 scan-card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex  align-items-center" *ngFor="let item of items, index as i">
+                    <span class="flex-grow-1 fs-3">{{ item.name }}</span>
+                    <button class="btn btn-danger fs-3 mx-3" (click)="remove(i)">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="d-flex flex-column m-5">
+            <button class="btn btn-primary p-3 finish-button" [disabled]="!items.length" (click)="complete()">Finish</button>
+        </div>
+        <div class="d-flex flex-column m-5">
+            <button class="btn btn-danger p-3 finish-button" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -6,18 +6,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './choose-action.component.html',
   styleUrls: ['./choose-action.component.scss']
 })
-export class ChooseActionComponent implements OnInit {
+export class ChooseActionComponent {
   user!: string;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.user = this.activatedRoute.snapshot.queryParams.userId;
   }
 
-  ngOnInit(): void {
-  }
-
   checkout() {
     this.router.navigate(['/checkout'], {
+      queryParams: {
+        userId: this.activatedRoute.snapshot.queryParams.userId
+      }
+    });
+  }
+
+  checkin() {
+    this.router.navigate(['/checkin'], {
       queryParams: {
         userId: this.activatedRoute.snapshot.queryParams.userId
       }

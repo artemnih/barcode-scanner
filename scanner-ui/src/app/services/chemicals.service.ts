@@ -30,7 +30,6 @@ const CHEMICALS = [
   providedIn: 'root'
 })
 export class ChemicalsService {
-
   getInfo(barcode: string) {
     const chemical = CHEMICALS.find(c => c.barcode === barcode);
     return of(chemical);
@@ -53,5 +52,19 @@ export class ChemicalsService {
 
     return of(mockTransaction.id);
   }
+
+  checkin(userId: string, items: Chemical[]) {
+    const transactionId = `000${TRANSACTION_ID++}`;
+    const mockTransaction: Transaction = {
+      id: transactionId,
+      date: new Date().toISOString(),
+      user: userId,
+      items: items
+    };
+    TRANSACTIONS.push(mockTransaction);
+
+    return of(mockTransaction.id);
+  }
+
 
 }

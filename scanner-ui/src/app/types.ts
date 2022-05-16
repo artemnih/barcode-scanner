@@ -1,7 +1,5 @@
 export interface Chemical {
     name: string;
-    formula: string;
-    weight: string;
     barcode: string;
 }
 
@@ -10,4 +8,9 @@ export interface Transaction {
     date: string;
     user: string;
     items: Chemical[];
+}
+
+export interface User {
+    id: string;
+    name: string;
 }

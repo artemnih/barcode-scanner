@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { Chemical, Transaction } from '../types';
+
+const TRANSACTIONS: Transaction[] = [];
+let TRANSACTION_ID = 0;
 
 const CHEMICALS = [
   {
@@ -27,15 +31,27 @@ const CHEMICALS = [
 })
 export class ChemicalsService {
 
-  constructor() { }
-
   getInfo(barcode: string) {
     const chemical = CHEMICALS.find(c => c.barcode === barcode);
     return of(chemical);
   }
 
-  checkout(items: string[]) {
-    return of(items);
+  getById(id: string) {
+    const transaction = TRANSACTIONS.find(t => t.id === id);
+    return of(transaction);
+  }
+
+  checkout(userId: string, items: Chemical[]) {
+    const transactionId = `000${TRANSACTION_ID++}`;
+    const mockTransaction: Transaction = {
+      id: transactionId,
+      date: new Date().toISOString(),
+      user: userId,
+      items: items
+    };
+    TRANSACTIONS.push(mockTransaction);
+
+    return of(mockTransaction.id);
   }
 
 }

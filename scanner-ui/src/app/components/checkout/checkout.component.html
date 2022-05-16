@@ -4,7 +4,7 @@
         <div class="card mt-3 scan-card">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex  align-items-center" *ngFor="let item of items, index as i">
-                    <span class="flex-grow-1 fs-3">{{ item }}</span>
+                    <span class="flex-grow-1 fs-3">{{ item.name }}</span>
                     <button class="btn btn-danger fs-3 mx-3" (click)="remove(i)">Delete</button>
                 </li>
             </ul>

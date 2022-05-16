@@ -5,7 +5,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ChooseActionComponent } from './components/choose-action/choose-action.component';
 import { HomeComponent } from './components/home/home.component';
 import { ScanUserComponent } from './components/scan-user/scan-user.component';
-import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +13,6 @@ const routes: Routes = [
   { path: 'checkin', component: CheckoutComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout-summary', component: CheckoutSummaryComponent },
-  { path: 'thankyou', component: ThankyouComponent },
   { path: '**', redirectTo: '' },
 ];
 

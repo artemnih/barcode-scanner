@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChemicalsService } from 'src/app/services/chemicals.service';
+import { Chemical } from 'src/app/types';
 
 @Component({
   selector: 'app-checkout',
@@ -9,9 +10,9 @@ import { ChemicalsService } from 'src/app/services/chemicals.service';
 })
 export class CheckoutComponent {
   private stash = [] as string[];
-  public items = [] as string[];
+  public items = [] as Chemical[];
 
-  constructor(private chemService: ChemicalsService, private router: Router) { }
+  constructor(private chemService: ChemicalsService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -22,7 +23,7 @@ export class CheckoutComponent {
 
       this.chemService.getInfo(barcode).subscribe(chemical => {
         if (chemical) {
-          this.items.push(chemical.name);
+          this.items.push(chemical);
         } else {
           alert('Chemical not found');
         }
@@ -32,18 +33,15 @@ export class CheckoutComponent {
     }
   }
 
-  removeItem(item: string) {
-    this.items = this.items.filter(i => i !== item);
-  }
-
   remove(index: number) {
     this.items.splice(index, 1);
   }
 
   complete() {
-    this.chemService.checkout(this.items).subscribe(() => {
+    const userId = this.activatedRoute.snapshot.paramMap.get('userId');
+    this.chemService.checkout(userId!, this.items).subscribe(transactionId => {
       this.items = [];
-      this.router.navigate(['/checkout-summary']);
+      this.router.navigate(['/checkout-summary'], { queryParams: { transactionId } });
     });
   }
 

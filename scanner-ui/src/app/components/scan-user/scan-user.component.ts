@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/types';
 
 @Component({
   selector: 'app-scan-user',
@@ -9,7 +11,11 @@ import { Router } from '@angular/router';
 export class ScanUserComponent {
   private stash = [] as string[];
 
-  constructor(private router: Router) { }
+  users!: User[];
+
+  constructor(private router: Router, private userService: UserService) { 
+    this.userService.getUsers().subscribe(users => this.users = users);
+  }
  
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -22,6 +28,10 @@ export class ScanUserComponent {
     } else {
       this.stash.push(event.key);
     }
+  }
+
+  choose(user: User) {
+    this.router.navigate(['/choose'], { queryParams: { userId: user.id } });
   }
 
   back() {
